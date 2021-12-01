@@ -3,6 +3,9 @@ package testdrivers
 import dao.UserDAO
 import models.User
 
+/**
+ * Define metodos "estaticos" (companion object) que testam a DAO dos Filmes.
+ */
 class UserDAOTestDrive {
     companion object : TestDriveDAOInterface {
         override fun selectTest(id: Int) {

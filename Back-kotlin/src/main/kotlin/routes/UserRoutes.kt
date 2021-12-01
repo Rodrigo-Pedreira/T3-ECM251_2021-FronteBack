@@ -8,11 +8,15 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import models.User
 
-
+/**
+ * Define as rotas relacionadas a '/user' e seus respectivos comportamentos.
+ */
 fun Route.userRouting() {
     route("/user"){
 
-        //Get all users in database
+        /**
+         * Seleciona todas as entradas da tabela de users.
+         */
         get ("/selectAll"){
             val users = UserDAO.selectAll()
             if (users[0].id == -1){
@@ -21,7 +25,9 @@ fun Route.userRouting() {
             call.respond(users)
         }
 
-        //Get user by id
+        /**
+         * Seleciona uma entrada especifica da tabela de users.
+         */
         get ("/select/{id}"){
             val id = call.parameters["id"]!!.toInt()
             val user = UserDAO.select(id)
@@ -32,7 +38,9 @@ fun Route.userRouting() {
             }
         }
 
-        //Add user
+        /**
+         * Adiciona uma entrada a tabela de users.
+         */
         post ("/insert") {
 
             val parameters = call.receiveParameters()
@@ -51,7 +59,9 @@ fun Route.userRouting() {
             )
         }
 
-        //Update user
+        /**
+         * Atualiza uma entrada da tabela de users.
+         */
         put ("/update/{id}") {
 
             val id = call.parameters["id"]?.toInt() ?: return@put call.respond(
@@ -86,7 +96,9 @@ fun Route.userRouting() {
             }
         }
 
-        //Delete user
+        /**
+         * Exclui uma entrada especifica da tabela de users.
+         */
         delete("/delete/{id}") {
             val id = call.parameters["id"] ?: return@delete call.respond(
                 HttpStatusCode.BadRequest

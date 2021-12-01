@@ -8,11 +8,15 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import models.Review
 
-
+/**
+ * Define as rotas relacionadas a '/review' e seus respectivos comportamentos.
+ */
 fun Route.reviewRouting() {
     route("/review"){
 
-        //Get all reviews in database
+        /**
+         * Seleciona todas as entradas da tabela de reviews.
+         */
         get ("/selectAll"){
             val reviews = ReviewDAO.selectAll()
             if (reviews[0].id == -1){
@@ -21,7 +25,9 @@ fun Route.reviewRouting() {
             call.respond(reviews)
         }
 
-        //Get review by id
+        /**
+         * Seleciona uma entrada especifica da tabela de reviews.
+         */
         get ("/select/{id}"){
             try {
                 val id = call.parameters["id"]?.toInt()
@@ -33,14 +39,16 @@ fun Route.reviewRouting() {
                 }
             }
             catch (exception:Exception){
-                exception.stackTrace
+                exception.printStackTrace()
             }
             finally {
                 call.respondText("Invalid review id.", status = HttpStatusCode.Conflict)
             }
         }
 
-        //Add review
+        /**
+         * Adiciona uma entrada a tabela de reviews.
+         */
         post ("/insert") {
 
             val parameters = call.receiveParameters()
@@ -65,7 +73,9 @@ fun Route.reviewRouting() {
             )
         }
 
-        //Update review
+        /**
+         * Atualiza uma entrada da tabela de reviews.
+         */
         put ("/update/{id}") {
 
             try {
@@ -101,14 +111,16 @@ fun Route.reviewRouting() {
                 }
             }
             catch (exception:Exception){
-                exception.stackTrace
+                exception.printStackTrace()
             }
             finally{
                 call.respondText("Invalid Id.",status = HttpStatusCode.BadRequest)
             }
         }
 
-        //Delete review
+        /**
+         * Exclui uma entrada especifica da tabela de reviews.
+         */
         delete("/delete/{id}") {
 
             val id = call.parameters["id"] ?: return@delete call.respond(

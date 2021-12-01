@@ -2,6 +2,9 @@ package dao
 
 import models.User
 
+/**
+ * Contem metodos "estaticos" (companion objects) que interagem com a tabela Users do banco de dados.
+ */
 class UserDAO {
     companion object : GenericDAOInterface {
 

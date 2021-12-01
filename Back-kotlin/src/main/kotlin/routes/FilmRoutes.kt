@@ -8,11 +8,15 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import models.Film
 
-
+/**
+ * Define as rotas relacionadas a '/film' e seus respectivos comportamentos.
+ */
 fun Route.filmRouting() {
     route("/film"){
 
-        //Get all films in database
+        /**
+         * Seleciona todas as entradas da tabela de filmes.
+         */
         get ("/selectAll"){
             val films = FilmDAO.selectAll()
             if (films[0].id == -1){
@@ -21,7 +25,9 @@ fun Route.filmRouting() {
             call.respond(films)
         }
 
-        //Get film by id
+        /**
+         * Seleciona uma entrada especifica da tabela de filmes.
+         */
         get ("/select/{id}"){
             try {
                 val id = call.parameters["id"]?.toInt()
@@ -33,14 +39,16 @@ fun Route.filmRouting() {
                 }
             }
             catch (exception:Exception){
-                exception.stackTrace
+                exception.printStackTrace()
             }
             finally {
                 call.respondText("Invalid film id.", status = HttpStatusCode.Conflict)
             }
         }
 
-        //Add film
+        /**
+         * Adiciona uma entrada a tabela de filmes.
+         */
         post ("/insert") {
 
             val parameters = call.receiveParameters()
@@ -61,7 +69,9 @@ fun Route.filmRouting() {
             )
         }
 
-        //Update film
+        /**
+         * Atualiza uma entrada da tabela de filmes.
+         */
         put ("/update/{id}") {
 
             try {
@@ -95,14 +105,16 @@ fun Route.filmRouting() {
                 }
             }
             catch (exception:Exception){
-                exception.stackTrace
+                exception.printStackTrace()
             }
             finally{
                 call.respondText("Invalid Id.",status = HttpStatusCode.BadRequest)
             }
         }
 
-        //Delete film
+        /**
+         * Exclui uma entrada especifica da tabela de filmes.
+         */
         delete("/delete/{id}") {
             // se funcionar o teste da estrutura acima, aplicar aqui
 

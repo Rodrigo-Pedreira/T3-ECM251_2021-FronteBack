@@ -2,6 +2,9 @@ package dao
 
 import models.Film
 
+/**
+ * Contem metodos "estaticos" (companion objects) que interagem com a tabela Films do banco de dados.
+ */
 class FilmDAO {
     companion object : GenericDAOInterface {
 
@@ -32,6 +35,17 @@ class FilmDAO {
             return film!!
         }
 
+        /**
+         * De certa forma realiza uma busca. Seleciona uma entrada da tabela filmes baseado em similaridades com certos parametros.
+         * Usa SELECT e WHERE foo LIKE.
+         *
+         * @param name Nome do filme.
+         * @param genre Genero.
+         * @param director Diretor.
+         * @param date Data de estreia.
+         *
+         * @return Retorna uma lista de objetos Film que correspondem a busca. Em caso de erro retorna uma lista com um elemento em que id= -1 e os campos de texto são "ERROR"
+         */
         fun selectFromString(
             name: String = "",
             genre: String = "",

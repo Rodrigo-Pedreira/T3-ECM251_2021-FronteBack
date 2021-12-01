@@ -11,8 +11,15 @@ import testdrivers.ReviewDAOTestDrive
 import testdrivers.UserDAOTestDrive
 import routes.*
 
+/**
+ * Controla o funcionamento do programa.
+ */
 class MainController {
     companion object {
+        /**
+         * Exibe uma sequencia de simbulos no console para ajudar na legibilidade.
+         * Usado para separar blocos de texto no console.
+         */
         private fun printTestSeparator() { println("\n**__*************________***************________*************__**\n\n")}
 
         fun testDAOs(select: Int = 1, update: Int = 1, delete: Int = 1) {
@@ -26,6 +33,9 @@ class MainController {
             UserDAOTestDrive.testAll(select, update, delete)
         }
 
+        /**
+         * Cria o servidor web, e registra suas rotas.
+         */
         fun runKtor(){
             embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
 

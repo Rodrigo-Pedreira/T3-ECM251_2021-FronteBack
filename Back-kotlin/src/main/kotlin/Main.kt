@@ -3,8 +3,13 @@ import testdrivers.FilmDAOTestDrive
 import testdrivers.ReviewDAOTestDrive
 import testdrivers.UserDAOTestDrive
 
+/**
+ * Main class usada para comeca o programa.
+ */
 fun main() {
-    MainController.runKtor()
+    MainController.runKtor()    // Roda o programa
+
+//    Testes:
 
 //    val id : Int = 11
 //    MainController.testDAOs(id,id,id)

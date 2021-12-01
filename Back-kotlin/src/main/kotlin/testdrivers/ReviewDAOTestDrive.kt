@@ -3,7 +3,9 @@ package testdrivers
 import dao.ReviewDAO
 import models.Review
 
-//TODO: JavaDocs
+/**
+ * Define metodos "estaticos" (companion object) que testam a DAO das reviews.
+ */
 class ReviewDAOTestDrive {
     companion object : TestDriveDAOInterface {
         override fun selectTest(id: Int) {

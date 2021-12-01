@@ -3,7 +3,9 @@ package dao
 import io.ktor.util.*
 import models.Review
 
-//TODO:JavaDocs
+/**
+ * Contem metodos "estaticos" (companion objects) que interagem com a tabela reviews do banco de dados.
+ */
 class ReviewDAO {
     companion object : GenericDAOInterface {
 
