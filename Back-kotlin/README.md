@@ -25,12 +25,12 @@ Breve lista de componentes:
 É necessario criar um perfil de run/debug configurantion.  
 \
 \
-![Add run configuration tooltip](.\images\Add_run_config_tooltip.jpg)  
+![Add run configuration tooltip](./images/Add_run_config_tooltip.jpg)  
 Clique em add configuration no canto superior direito, assim como mostra a imagem.
 \
 \
 \
-![Add run configuration window](.\images\Janela_run_config1.jpg)  
+![Add run configuration window](./images/Janela_run_config1.jpg)  
 Ao clicar uma janela como está deve aparecer. Clique em "Add new configuration" e escolha *Kotlin* no menu que ira aparecer.
 \
 \
