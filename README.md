@@ -32,3 +32,54 @@ O banco de dados, gerenciado com *MariaDB* roda numa maquina virtual. Este tem t
 ## Diagrama do banco de dados
 
 ![Diagrama do banco de dados](./DiagramaDB.jpeg)
+
+<details>
+<summary>Codigo MySQL</summary>
+
+```sql
+CREATE TABLE Films (
+	id       INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name     TEXT    NOT NULL,
+	genre    TEXT    NOT NULL,
+	director TEXT    NOT NULL,
+	date     TEXT    NOT NULL);
+
+CREATE TABLE reviews (
+	id      INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	idUser  INTEGER NOT NULL,
+	idFilm  INTEGER NOT NULL,
+	review  TEXT    NOT NULL,
+	likes   INTEGER NOT NULL,
+	score   REAL    NOT NULL,
+	data    TEXT    NOT NULL);
+
+CREATE TABLE Users (
+	id       INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name     TEXT    NOT NULL,
+	password TEXT    NOT NULL,
+	email    TEXT    NOT NULL);
+
+INSERT INTO Films (name,genre,director,date)
+VALUES	('The Avengers','action','Joss Whendon','27/04/2012'),
+	    ('Avengers: Age of Ultron','action','Joss Whendon','01/05/2015'),
+	    ('Grown Ups','comedy','Dennis Dugan','25/06/2010'),
+	    ('Grown Ups 2','comedy','Dennis Dugan','12/07/2013');
+
+INSERT INTO Users (name,password,email)
+VALUES	('Max','M@x1Mu$','max.10@hotmail.com'),
+	    ('Mel','Mel1F1c@D0rA','mel.lado@hotmail.com'),
+	    ('Stella','C0$73ll@','cos.stela@hotmail.com');
+
+INSERT INTO reviews (idUser,idFilm,review,likes,score,data)
+VALUES	(1,1,'Muito Bom',50,4.3,'09/10/2021'),
+	    (2,1,'Quero mais!!',45,4.6,'10/10/2021'),
+	    (1,2,'Legal de mais',65,4.7,'10/05/2021'),
+	    (3,3,'Ri muito',35,3.8,'08/03/2021');
+
+SELECT * FROM Users;
+
+SELECT * FROM Films;
+
+SELECT * FROM reviews;
+```
+</details>
