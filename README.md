@@ -28,3 +28,7 @@ Criamos um website em que o usuario pode postar reviews e também visualizar e a
 O tanto o site quanto o banco de dados rodam no localhost e no momento não são acessíveis pela internet.  
 
 O banco de dados, gerenciado com *MariaDB* roda numa maquina virtual. Este tem tres tabelas: uma para usuarios, uma para reviews e uma para filmes.
+
+## Diagrama do banco de dados
+
+![Diagrama do banco de dados](./DiagramaDB.jpeg)
